@@ -19,7 +19,7 @@
 
     <section id="services" class="py-12">
       <div class="container mx-auto text-center">
-        <h2 class="text-style">Our Services</h2>
+        <h1 class="text-style-main">Our Services</h1>
         <table class="table-auto w-full border-collapse border border-gray-200">
           <tbody>
             <tr class="bg-white">
@@ -49,8 +49,8 @@
 
     <section class="py-12 bg-gray-100">
       <div class="container mx-auto text-center">
-        <h2 class="text-style">Interesting Facts</h2>
-        <p class="text-style">The most important question: Tea, coffee, or caffeine-free? Let us help you choose.</p>
+        <h1 class="text-style-main">Interesting Facts</h1>
+        <h2 class="text-style-main">The most important question: Tea, coffee, or caffeine-free? Let us help you choose.</h2>
         <table class="table-auto w-full border-collapse border border-gray-200">
           <tbody>
             <tr class="bg-white">
@@ -77,23 +77,133 @@
         </table>
       </div>
     </section>
-  
+    
     <section class="py-12">
-      <div class="container mx-auto text-center">
-        <h2 class="text-style">Our Clients Say</h2>
-        <div class="flex justify-center">
-          <div class="w-1/3 bg-white p-6 rounded shadow-md">
-            <img src="@/assets/462240314_2386835081677165_3528890189184200949_n.jpg" alt="Client" class="w-16 h-16 rounded-full mx-auto mb-4">
-            <p class="text-style">"Testimonials provide a sense of what it's like to work with you or use your services."</p>
-            <p class="text-style">Robert Rose, Product Designer</p>
+    <div class="container mx-auto text-center">
+      <h1 class="text-style-main">Our Clients Say</h1>
+      <div class="flex justify-center">
+        <div class="w-1/3 bg-white p-6 rounded shadow-md">
+          <!-- Slideshow -->
+          <div class="slideshow">
+            <!-- Current slide -->
+            <div
+              v-for="(slide, index) in slides"
+              :key="index"
+              v-show="currentSlideIndex === index"
+              class="slide"
+            >
+              <img
+                :src="slide.image" 
+                alt="Client"
+                class="image-slide"
+              />
+              <div class="testimonial">
+                <p class="text-style">"{{ slide.text }}"</p>
+                <p class="text-style">{{ slide.name }}, {{ slide.role }}</p>
+              </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <button class="prev" @click="prevSlide">&#10094;</button>
+            <button class="next" @click="nextSlide">&#10095;</button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      currentSlideIndex: 0,
+      slides: [
+        {
+          image: require('@/assets/22.jpg'), // Replace with the path to your image
+          text: "Testimonials provide a sense of what it's like to work with you, or what it's like to use your products and services.",
+          name: "Robert Rose",
+          role: "Product Designer",
+        },
+        {
+          image: require('@/assets/33.jpg'),
+          text: "This service exceeded my expectations and was truly transformative. I highly recommend it to others.",
+          name: "Emma Smith",
+          role: "Software Engineer",
+        },
+        {
+          image: require('@/assets/44.jpg'),
+          text: "A game-changing experience. The team is highly professional and delivers exactly what they promise.",
+          name: "John Doe",
+          role: "Marketing Specialist",
+        },
+      ],
+    };
+  },
+  methods: {
+    nextSlide() {
+      this.currentSlideIndex =
+        (this.currentSlideIndex + 1) % this.slides.length;
+    },
+    prevSlide() {
+      this.currentSlideIndex =
+        (this.currentSlideIndex - 1 + this.slides.length) % this.slides.length;
+    },
+  },
+};
+</script>
+
 <style scoped>
+.slideshow {
+  position: relative;
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.testimonial {
+  margin-top: 10px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: bold;
+  font-size: 1.5em;
+  border: none;
+  background: transparent;
+  color: #555;
+}
+
+.prev:hover,
+.next:hover {
+  color: #333;
+}
+
+.prev {
+  left: -20px;
+}
+
+.next {
+  right: -20px;
+}
+
+.image-slide{
+  height: max-content;
+  max-width: 40%;
+  border-radius: 10px;
+}
+
 .header-text {
   font-style: italic;
   color: bisque;
@@ -102,6 +212,12 @@
 .text-style{
   font-style: italic;
   color: #6b4226;
+}
+
+.text-style-main{
+  font-style: italic;
+  color: #6b4226;
+  text-align: center;
 }
 
 header { 
@@ -141,7 +257,7 @@ header {
   }
 
   .bg-start {
-    background-image: url('@/assets/006.jpg');
+    background-image: url('@/assets/12.jpg');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
