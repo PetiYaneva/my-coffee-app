@@ -1,14 +1,22 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div>
     <header class="bg-start">
-      <div class="container mx-auto flex justify-between items-center px-6">
+      <div class="container mx-auto flex justify-between items-center">
         <h1 class="header-text">Coffee for coffee lovers</h1>
         <nav>
           <ul class="navbar">
-            <a class="active" href="#home">Home</a>
-            <a href="#services">Menu</a>
-            <a href="#contact">Contact Us</a>
-            <a href="#information">Information</a>
+            <a class="active">
+              <router-link class="active" to="/">Home</router-link>
+            </a>
+            <a>
+              <router-link to="/services">Menu</router-link>
+            </a>
+            <a>
+              <router-link to="/contact">Contact Us</router-link>
+            </a>
+            <a>
+              <router-link to="/information">Information</router-link>
+            </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"> 
               <i class="fa fa-bars"></i>
             </a>
@@ -16,143 +24,9 @@
         </nav>
       </div>
     </header>
-
-    <section id="services" class="py-12">
-      <div class="container mx-auto text-center">
-        <h1 class="text-style-main">Our Services</h1>
-        <table class="table-auto w-full border-collapse border border-gray-200">
-          <tbody>
-            <tr class="bg-white">
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/001.jpg" alt="Products" class="service-image mb-2">
-                <h4 class="text-style">Products</h4>
-                <h5 class="text-style">What do we offer?</h5>
-                <button class="btn">Read More</button> 
-              </td>
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/002.jpg" alt="Information" class="service-image mb-2">
-                <h4 class="text-style">Information</h4>
-                <h5 class="text-style">Answers to your questions</h5>
-                <button class="btn btn-gray">Read More</button>
-              </td>
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/003.jpg" alt="Company" class="service-image mb-2">
-                <h4 class="text-style">Company</h4>
-                <h5 class="text-style">About us</h5>
-                <button class="btn">Read More</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="py-12 bg-gray-100">
-      <div class="container mx-auto text-center">
-        <h1 class="text-style-main">Interesting Facts</h1>
-        <h2 class="text-style-main">The most important question: Tea, coffee, or caffeine-free? Let us help you choose.</h2>
-        <table class="table-auto w-full border-collapse border border-gray-200">
-          <tbody>
-            <tr class="bg-white">
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/004.jpg" alt="Coffee" class="service-image">
-                <h4 class="text-style">Coffee</h4>
-                <p class="text-style">Describe your service here.</p>
-                <button class="btn">Read More</button> 
-              </td>
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/What_Plants_Can_You_Make_Tea_From_.jpg" alt="Tea" class="service-image">
-                <h4 class="text-style">Tea</h4>
-                <p class="text-style">Describe your service here.</p>
-                <button class="btn btn-gray">Read More</button>
-              </td>
-              <td class="border border-gray-300 py-4 px-6">
-                <img src="@/assets/1.jpg" alt="Caffeine Free" class="service-image">
-                <h4 class="text-style">Caffeine Free</h4>
-                <p class="text-style">Describe your service here.</p>
-                <button class="btn">Read More</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    
-    <section class="py-12">
-    <div class="container mx-auto text-center">
-      <h1 class="text-style-main">Our Clients Say</h1>
-      <div class="flex justify-center">
-        <div class="w-1/3 bg-white p-6 rounded shadow-md">
-          <!-- Slideshow -->
-          <div class="slideshow">
-            <!-- Current slide -->
-            <div
-              v-for="(slide, index) in slides"
-              :key="index"
-              v-show="currentSlideIndex === index"
-              class="slide"
-            >
-              <img
-                :src="slide.image" 
-                alt="Client"
-                class="image-slide"
-              />
-              <div class="testimonial">
-                <p class="text-style">"{{ slide.text }}"</p>
-                <p class="text-style">{{ slide.name }}, {{ slide.role }}</p>
-              </div>
-            </div>
-
-            <!-- Navigation buttons -->
-            <button class="prev" @click="prevSlide">&#10094;</button>
-            <button class="next" @click="nextSlide">&#10095;</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <router-view />
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      currentSlideIndex: 0,
-      slides: [
-        {
-          image: require('@/assets/22.jpg'), // Replace with the path to your image
-          text: "Testimonials provide a sense of what it's like to work with you, or what it's like to use your products and services.",
-          name: "Robert Rose",
-          role: "Product Designer",
-        },
-        {
-          image: require('@/assets/33.jpg'),
-          text: "This service exceeded my expectations and was truly transformative. I highly recommend it to others.",
-          name: "Emma Smith",
-          role: "Software Engineer",
-        },
-        {
-          image: require('@/assets/44.jpg'),
-          text: "A game-changing experience. The team is highly professional and delivers exactly what they promise.",
-          name: "John Doe",
-          role: "Marketing Specialist",
-        },
-      ],
-    };
-  },
-  methods: {
-    nextSlide() {
-      this.currentSlideIndex =
-        (this.currentSlideIndex + 1) % this.slides.length;
-    },
-    prevSlide() {
-      this.currentSlideIndex =
-        (this.currentSlideIndex - 1 + this.slides.length) % this.slides.length;
-    },
-  },
-};
-</script>
 
 <style scoped>
 .slideshow {
@@ -229,7 +103,7 @@ header {
    position: relative; 
    top: 500px; 
    overflow: hidden; 
-   background-color: #333; 
+   background-color: #333;
   } 
   
   .navbar a { 
@@ -261,9 +135,10 @@ header {
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
-    max-width: 100%;
+    min-width: 100%;
     max-height: 100%; 
     opacity: 0.8;
+    padding-bottom:25px;
   }
 
   .service-image {
