@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="app">
     <header class="bg-start">
-      <div class="container mx-auto flex justify-between items-center">
+      <div>
         <h1 class="header-text">Coffee for coffee lovers</h1>
         <nav>
           <ul class="navbar">
@@ -9,13 +9,13 @@
               <router-link class="active" to="/">Home</router-link>
             </a>
             <a>
-              <router-link to="/services">Menu</router-link>
+              <router-link to="/services" exact-active-class="active">Menu</router-link>
             </a>
             <a>
-              <router-link to="/contact">Contact Us</router-link>
+              <router-link to="/contact" exact-active-class="active">Contact Us</router-link>
             </a>
             <a>
-              <router-link to="/information">Information</router-link>
+              <router-link to="/information" exact-active-class="active">Information</router-link>
             </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"> 
               <i class="fa fa-bars"></i>
@@ -29,53 +29,10 @@
 </template>
 
 <style scoped>
-.slideshow {
-  position: relative;
-  max-width: 50%;
-  margin: auto;
-  text-align: center;
-}
-
-.slide {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.testimonial {
-  margin-top: 10px;
-}
-
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: bold;
-  font-size: 1.5em;
-  border: none;
-  background: transparent;
-  color: #555;
-}
-
-.prev:hover,
-.next:hover {
-  color: #333;
-}
-
-.prev {
-  left: -20px;
-}
-
-.next {
-  right: -20px;
-}
-
-.image-slide{
-  height: max-content;
-  max-width: 40%;
-  border-radius: 10px;
+router-view {
+  display: block;
+  width: auto;
+  height: auto;
 }
 
 .header-text {
@@ -97,57 +54,64 @@
 header { 
   position: relative; 
   height: 600px;
- } 
+  width: 100%; /* Takes up full width */
+  margin: 0;
+  padding: 0;
+  border: 0;
+} 
 
- .navbar {
-   position: relative; 
-   top: 500px; 
-   overflow: hidden; 
-   background-color: #333;
-  } 
+.navbar {
+  position: relative; 
+  top: 500px; 
+  overflow: hidden; 
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+} 
   
-  .navbar a { 
-    float: left; 
-    display: block; 
-    color: #f2f2f2; 
-    text-align: center; 
-    padding: 14px 16px; 
-    text-decoration: none; 
-    font-size: 17px; 
-  } 
+.navbar a { 
+  float: left; 
+  display: block; 
+  color: #f2f2f2; 
+  text-align: center; 
+  padding: 14px 16px; 
+  text-decoration: none; 
+  font-size: 17px; 
+} 
   
-  .navbar a:hover { 
-    background-color: #ddd; 
-    color: black; 
-  } 
+.navbar a:hover { 
+  background-color: #ddd; 
+  color: black; 
+} 
   
-  .navbar a.active { 
-    background-color: #04AA6D; 
-    color: white; 
-  } 
+.navbar a.active { 
+  background-color: #04AA6D; 
+  color: white; 
+} 
   
-  .content { 
-    padding: 16px; 
-  }
+.content { 
+  padding: 16px; 
+}
 
-  .bg-start {
-    background-image: url('@/assets/12.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    min-width: 100%;
-    max-height: 100%; 
-    opacity: 0.8;
-    padding-bottom:25px;
-  }
+.bg-start {
+  background-image: url('@/assets/12.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  margin: 0;
+  border: 0;
+  width: 100%;
+  padding-bottom:25px;
+}
 
-  .service-image {
-    width: 350px !important;
-    height: 200px !important;
-    object-fit: cover !important;
-    margin: 0 auto !important;
-    border-radius: 8px !important;
-  }
+.service-image {
+  width: 350px !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  margin: 0 auto !important;
+  border-radius: 8px !important;
+}
 
 .btn {
   background-color: #38a169; 
@@ -176,6 +140,7 @@ header {
 .text-brown {
   color: #6b4226;
 }
+
 section.bg-cover {
   background-size: cover;
   background-position: center;

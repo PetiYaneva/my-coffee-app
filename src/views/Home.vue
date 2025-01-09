@@ -1,24 +1,24 @@
 <template>
-    <div>
+  <div>
     <section>
-      <div class="container mx-auto text-center ">
+      <div>
         <h1 class="text-style-main">Our Services</h1>
-        <table class="table-auto w-full border-collapse border border-gray-200">
+        <table>
           <tbody>
             <tr class="bg-white">
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/001.jpg" alt="Products" class="service-image mb-2">
                 <h4 class="text-style-behind">Products</h4>
                 <p class="text-style-behind">What do we offer?</p>
                 <button class="btn">Read More</button> 
               </td>
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/002.jpg" alt="Information" class="service-image mb-2">
                 <h4 class="text-style-behind">Information</h4>
                 <p class="text-style-behind">Answers to your questions</p>
                 <button class="btn btn-gray">Read More</button>
               </td>
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/003.jpg" alt="Company" class="service-image mb-2">
                 <h4 class="text-style-behind">Company</h4>
                 <p class="text-style-behind">About us</p>
@@ -30,26 +30,26 @@
       </div>
     </section>
 
-    <section class="py-12 bg-gray-100">
-      <div class="container mx-auto text-center">
+    <section>
+      <div>
         <h1 class="text-style-main">Interesting Facts</h1>
         <p class="text-style">The most important question: Tea, coffee, or caffeine-free? Let us help you choose.</p>
-        <table class="table-auto w-full border-collapse border border-gray-200">
+        <table>
           <tbody>
             <tr class="bg-white">
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/004.jpg" alt="Coffee" class="service-image">
                 <h4 class="text-style-behind">Coffee</h4>
                 <p class="text-style-behind">Describe your service here.</p>
                 <button class="btn">Read More</button> 
               </td>
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/What_Plants_Can_You_Make_Tea_From_.jpg" alt="Tea" class="service-image">
                 <h4 class="text-style-behind">Tea</h4>
                 <p class="text-style-behind">Describe your service here.</p>
                 <button class="btn btn-gray">Read More</button>
               </td>
-              <td class="border border-gray-300 py-4 px-6">
+              <td>
                 <img src="@/assets/1.jpg" alt="Caffeine Free" class="service-image">
                 <h4 class="text-style-behind">Caffeine Free</h4>
                 <p class="text-style-behind">Describe your service here.</p>
@@ -61,14 +61,12 @@
       </div>
     </section>
     
-    <section class="py-12">
-    <div class="container mx-auto text-center">
+  <section>
+    <div>
       <h1 class="text-style-main">Our Clients Say</h1>
-      <div class="flex justify-center">
-        <div class="w-1/3 bg-white p-6 rounded shadow-md">
-          <!-- Slideshow -->
+      <div>
+        <div>
           <div class="slideshow">
-            <!-- Current slide -->
             <div
               v-for="(slide, index) in slides"
               :key="index"
@@ -86,14 +84,13 @@
               </div>
             </div>
 
-            <!-- Navigation buttons -->
             <button class="prev" @click="prevSlide">&#10094;</button>
             <button class="next" @click="nextSlide">&#10095;</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
 </template>
 
@@ -201,9 +198,10 @@ export default {
 }
 
 .text-style-behind{
-    font-style: italic;
-    color: #6b4226;
-    font-size:20px;
+  font-style: italic;
+  color: #6b4226;
+  font-size:20px;
+  padding: 3px;
 }
 
 .text-style-main{
@@ -211,6 +209,8 @@ export default {
   color: #6b4226;
   text-align: center;
   font-size:40px;
+  padding: 15px;
+  padding-top: 15px;
 }
 
 header { 
@@ -304,9 +304,10 @@ table {
   border-collapse: collapse;
   font-size: 1rem;
 }
+
 th, td {
   background-color: #f5f5dc;
-  padding: 8px;
+  padding: 30px;
 }
 th {
   background-color: #648069;
