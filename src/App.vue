@@ -6,7 +6,7 @@
         <nav>
           <ul class="navbar">
             <a class="active">
-              <router-link class="active" to="/">Home</router-link>
+              <router-link to="/" exact-active-class="active">Home</router-link>
             </a>
             <a>
               <router-link to="/services" exact-active-class="active">Menu</router-link>
