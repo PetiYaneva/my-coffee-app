@@ -37,13 +37,11 @@ export default {
                 <li>Coffee was first brewed in the 15th century.</li>  
                 <li>Over 2 billion cups of coffee are consumed daily worldwide.</li>               
                 </ul>
-              <img class="ingredientsImg" src="src/assets/coffee.jpg" />
             </div>
           `
         },
         { title: "Tea", content: `
         <div class="lowerContainer">
-        <img id="img2" class="ingredientsImg" src="@/assets/Tea.jpg"/>
         <ul class="ingredients">
           <ul class="ingredients">
             <li>Tea is made from the leaves of the Camellia sinensis plant.</li>  
@@ -73,7 +71,6 @@ export default {
               <li>Decaf still provides antioxidants and similar health benefits to regular coffee.</li>  
               <li>Some coffee lovers drink decaf in the evening to avoid disrupting sleep.</li> 
             </ul>
-            <img class="ingredientsImg" src="../assets/coffee.jpg"/>
         </div>` }
       ]
     };
