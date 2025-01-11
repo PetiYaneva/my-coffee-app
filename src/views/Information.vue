@@ -1,88 +1,142 @@
 <template>
-      <button class="accordion">Section 1</button>
-    <div class="panel">
-      <div class="upperContainer">
-            <ul class="ingredients"> Coffee
-                <li class="things">"Flour tortillas - You'll need big ones! I find 12-inch tortillas<br>to be the easiest to roll</li>
-                <li class="things">Scrambled eggs - A breakfast burrito essential. They add yummy<br>creamy texture and lots of protein
-                    to keep you full till lunchtime.<br>For a vegan variation, check out this vegan breakfast burrito recipe!</li>
-                <li class="things">Spicy potatoes - I roast them with smoked paprika to add bold, smoky<br>flavor to the filling</li>
-                <li class="things">Avocado - For creamy richness</li>
-                <li class="things">Pico de gallo - For bright, zesty flavor</li>
-                <li class="things">fresh fixings - shredded cabbage, roasted red peppers, black beans, cilantro,<br>and spinach</li>
-            </ul>
-            <img class="ingredientsImg" src="@/assets/coffee.jpg"/>
-        </div>
+ <div>
+    <div v-for="(section, index) in sections" :key="index">
+      <button class="accordion" id="yasha" @click="toggleAccordion(index)">
+        {{ section.title }}
+      </button>
+      <div
+        class="panel"
+        :style="{ maxHeight: activeIndex === index ? panelHeight + 'px' : '0' }"
+      >
+        <div v-html="section.content" />
+      </div>
     </div>
-
-    <button class="accordion">Section 2</button>
-    <div class="panel">
-      <div class="lowerContainer">
-        <img id="img2" class="ingredientsImg" src="@/assets/Tea.jpg"/>
-        <ol class="ingredients"> Tea
-          <li  id="makeit" class="things">Make sure you have big tortillas! In the store, look for 12-inch<br>or larger tortillas.
-                          Often, they'll be labeled as “Burrito-Size.” These<br>tortillas are the easiest to tuck and 
-                          roll around all the yummy fillings.</li>
-          <li id="makeit" class="things">Lay your fillings in a (relatively) narrow strip on the tortilla. 
-              If you<br>spread the ingredients out too much, you won't be able to get the<br>tortilla over and around them. 
-              I start by making a thin layer of<br>spinach on the bottom and then spread the other 
-              fillings in narrow<br>rows on top</li>
-          <li id="makeit" class="things">Tuck in the sides first. Then, fold the tortilla over the fillings and<br>roll it closed. 
-              I've found this “tuck & roll” method to be the most<br>effective for tightly packing the filling
-              into the tortilla.</li>
-          <li id="makeit" class="things">Have an extra pair of hands nearby. Before I roll the tortilla closed, 
-              <br>I like to have Jack gently press the fillings toward my hands in<br>order to pack them together tightly.
-                That way, my burrito<br>turns out nice and compact. He usually helps out during this step:</li>
-          </ol>
-        </div>
-    </div>
-
-    <button class="accordion">Section 3</button>
-    <div class="panel">
-      <div class="upperContainer2">
-            <ul class="ingredients"> Caffeine-free coffee
-                <li class="things">"Flour tortillas - You'll need big ones! I find 12-inch tortillas<br>to be the easiest to roll</li>
-                <li class="things">Scrambled eggs - A breakfast burrito essential. They add yummy<br>creamy texture and lots of protein
-                    to keep you full till lunchtime.<br>For a vegan variation, check out this vegan breakfast burrito recipe!</li>
-                <li class="things">Spicy potatoes - I roast them with smoked paprika to add bold, smoky<br>flavor to the filling</li>
-                <li class="things">Avocado - For creamy richness</li>
-                <li class="things">Pico de gallo - For bright, zesty flavor</li>
-                <li class="things">fresh fixings - shredded cabbage, roasted red peppers, black beans, cilantro,<br>and spinach</li>
-            </ul>
-            <img class="ingredientsImg" src="@/assets/coffee.jpg"/>
-        </div>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "InformationPage", // Use a multi-word component name
+  name: "InformationPage",
+  data() {
+    return {
+      activeIndex: null,
+      sections: [
+      {
+          title: "Coffee",
+          content: `
+            <div class="upperContainer">
+              <ul class="ingredients">
+                <li>Coffee is made from roasted coffee beans.</li>  
+                <li>It contains caffeine, which boosts energy.</li>  
+                <li>Popular types include espresso, latte, and black coffee.</li>  
+                <li>Coffee is grown in tropical regions.</li>  
+                <li>It’s one of the most widely consumed drinks worldwide.</li>  
+                <li>Coffee originated in Ethiopia.</li>  
+                <li>Brazil is the largest coffee producer.</li>  
+                <li>The coffee plant grows best in warm climates.</li>  
+                <li>Coffee was first brewed in the 15th century.</li>  
+                <li>Over 2 billion cups of coffee are consumed daily worldwide.</li>               
+                </ul>
+              <img class="ingredientsImg" src="src/assets/coffee.jpg" />
+            </div>
+          `
+        },
+        { title: "Tea", content: `
+        <div class="lowerContainer">
+        <img id="img2" class="ingredientsImg" src="@/assets/Tea.jpg"/>
+        <ul class="ingredients">
+          <ul class="ingredients">
+            <li>Tea is made from the leaves of the Camellia sinensis plant.</li>  
+            <li>It is the second most consumed beverage in the world, after water.</li>  
+            <li>There are four main types of tea: black, green, white, and oolong.</li>  
+            <li>Tea originated in China over 5,000 years ago.</li>  
+            <li>India is the largest producer of black tea.</li>  
+            <li>Green tea is rich in antioxidants and has numerous health benefits.</li>  
+            <li>Herbal teas, like chamomile and peppermint, contain no caffeine.</li>  
+            <li>Matcha is a powdered form of green tea, popular in Japan.</li>  
+            <li>Tea can be served hot or iced, depending on preference.</li>  
+            <li>Over 3 billion cups of tea are consumed daily worldwide.</li>
+          </ul>
+        </div>
+        ` 
+      },
+        { title: "Caffeine-free coffee", content: `<div class="upperContainer2">
+            <ul class="ingredients">
+              <li>Decaffeinated coffee is made by removing most of the caffeine from regular coffee beans.</li>  
+              <li>It still retains the flavor of coffee but with significantly less caffeine.</li>  
+              <li>Common methods of decaffeination include water processing and chemical solvents.</li>  
+              <li>Decaf coffee contains about 97% less caffeine than regular coffee.</li>  
+              <li>It’s a great option for those sensitive to caffeine.</li>  
+              <li>Decaf coffee can be brewed just like regular coffee.</li>  
+              <li>The first decaffeination process was developed in the early 1900s.</li>  
+              <li>Decaf espresso is commonly used in caffeine-free lattes and cappuccinos.</li>  
+              <li>Decaf still provides antioxidants and similar health benefits to regular coffee.</li>  
+              <li>Some coffee lovers drink decaf in the evening to avoid disrupting sleep.</li> 
+            </ul>
+            <img class="ingredientsImg" src="../assets/coffee.jpg"/>
+        </div>` }
+      ]
+    };
+  },
+  computed: {
+    panelHeight() {
+      return 800; // Adjust based on content or dynamically calculate
+    }
+  },
+  methods: {
+    toggleAccordion(index) {
+      this.activeIndex = this.activeIndex === index ? null : index;
+    }
+  }
 };
-
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    } 
-  });
-}
 </script>
 
 <style>
+ #yasha {
+  background-color: rgb(186, 250, 186);
+  color: #444;
+  cursor: pointer;
+  padding: 50px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 30px;
+  transition: 0.4s;
+  border:#444;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
 body {
   margin: 0em;
 }
 
 .ingredients {
   text-align: center;
-  font-size: 5rem;
+  font-size: 2rem;
   font-family: 'Amatic SC', cursive;
 }
 
@@ -142,16 +196,16 @@ a {
 
 .lowerContainer {
   width: auto;
-  height: 60em;
   background-color: #fefae0;
   margin: 0em;
   display: flex;
   flex-direction: row; 
-  justify-content: space-around; 
+  justify-content: center; 
   align-items: center;
   flex-wrap: wrap;
   top: 0em;
   left: 0em;
+  margin-top: 0em;
 }
 
 .accordion {
