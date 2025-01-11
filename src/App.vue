@@ -17,6 +17,9 @@
             <a>
               <router-link to="/information" exact-active-class="active">Information</router-link>
             </a>
+            <a>
+              <router-link to="/about" exact-active-class="active">About us</router-link>
+            </a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"> 
               <i class="fa fa-bars"></i>
             </a>
